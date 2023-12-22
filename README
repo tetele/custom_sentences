@@ -27,7 +27,7 @@ If you've already defined some custom intents and want to add others from this r
 
 ```yaml
 # /config/configuration.yaml
-intents:
+intent_script:
   MyIntent:
     action:
       service: my.service
@@ -35,7 +35,7 @@ intents:
       text: "I've called my service"
 ```
 
-Create a file called `/config/custom_intents/default.yaml` and move everything that's under `intents:` in `configuration.yaml`, but unindent the resulting dictionary so that it's on the first level in the file.
+Create a file called `/config/custom_intents/default.yaml` and move everything that's under `intent_script:` in `configuration.yaml`, but unindent the resulting dictionary so that it's on the first level in the file.
 
 ```yaml
 # /config/custom_intents/default.yaml
@@ -46,11 +46,11 @@ MyIntent:
     text: "I've called my service"
 ```
 
-Next, edit `configuration.yaml` and alter the `intents:` key
+Next, edit `configuration.yaml` and alter the `intent_script:` key
 
 ```yaml
 # /config/configuration.yaml
-intents: !include_dir_merge_named custom_intents
+intent_script: !include_dir_merge_named custom_intents
 ```
 
 At the end, reload the `Intent script` configuration from the [Developer tools](https://my.home-assistant.io/redirect/server_controls/). You're done!
@@ -68,7 +68,7 @@ The file structure is that described in the Home Assistant docs for [custom sent
 
 ```yaml
 language: "xx" # Replace this with an actual language code
-intents:
+intent_script:
   IntentHandler: # Change this to an actual intent key
     data:
       - sentences:
@@ -106,7 +106,7 @@ If you see an intent that you'd like to use, but it's not translated in your lan
 
 ```yaml
 language: "fr" # Replace this with the language code for your actual language, if it's not French
-intents:
+intent_script:
   IntentHandler:
     data:
       - sentences:
