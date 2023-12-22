@@ -1,0 +1,17 @@
+# Concatenates two or more sentences together using "and"
+ConcatenatedSentences:
+  speech:
+    text: OK
+  async_action: true
+  mode: parallel
+  action:
+    - service: conversation.process
+      data:
+        agent_id: homeassistant
+        text: "{{ sentence_1 }}"
+        language: "{{ language }}"
+    - service: conversation.process
+      data:
+        agent_id: homeassistant
+        text: "{{ sentence_2 }}"
+        language: "{{ language }}"

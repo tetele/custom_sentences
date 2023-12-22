@@ -1,0 +1,13 @@
+language: "en"
+intents:
+  ConcatenatedSentences: # Change this to an actual intent key
+    data:
+      - sentences:
+          - "{sentence_1} (and[ then]|then) {sentence_2}"
+        slots:
+          language: "en"
+lists:
+  sentence_1:
+    wildcard: true
+  sentence_2:
+    wildcard: true

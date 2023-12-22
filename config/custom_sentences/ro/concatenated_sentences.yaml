@@ -1,0 +1,13 @@
+language: "ro"
+intents:
+  ConcatenatedSentences: # Change this to an actual intent key
+    data:
+      - sentences:
+          - "{sentence_1} (apoi|((ș|s)i|iar) [apoi]) {sentence_2}"
+        slots:
+          language: "ro"
+lists:
+  sentence_1:
+    wildcard: true
+  sentence_2:
+    wildcard: true
