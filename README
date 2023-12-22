@@ -57,6 +57,19 @@ At the end, reload the `Intent script` configuration from the [Developer tools](
 
 ## How to contribute
 
+### Custom intents
+
+To add custom intents, add a filed called `custom_intents/intent_handler.yaml`, where `intent_handler` is the [snake_case](https://en.wikipedia.org/wiki/Snake_case) notation of the intent name (e.g. `ExampleIntent` -> `example_intent`)
+
+The file structure is that described in the Home Assistant docs for [intent script](https://www.home-assistant.io/integrations/intent_script/)
+
+```yaml
+# Make a short description of what the intent does
+IntentHandler: # Change this to your own intent name
+  speech:
+    text: "This is a custom response"
+```
+
 ### Custom sentences for existing intents
 
 If you want to add sentences for either a built-in Home Assistant intent or for a custom one, you should add/edit the `custom_sentences/<xx>/<intent_handler>.yaml` file, where:
@@ -83,22 +96,6 @@ lists:
 ```
 
 You will need to add as many files as you have translations for your sentences.
-
-### Custom intents
-
-To add custom intents, add a filed called `custom_sentences/xx/intent_handler.yaml`, where:
-
-- `xx` is the language code (e.g. `en` for English)
-- `intent_handler` is the [snake_case](https://en.wikipedia.org/wiki/Snake_case) notation of the intent name (e.g. `ExampleIntent` -> `example_intent`)
-
-The file structure is that described in the Home Assistant docs for [intent script](https://www.home-assistant.io/integrations/intent_script/)
-
-```yaml
-# Make a short description of what the intent does
-IntentHandler: # Change this to your own intent name
-  speech:
-    text: "This is a custom response"
-```
 
 ### Translations
 
