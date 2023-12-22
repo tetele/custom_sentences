@@ -81,7 +81,7 @@ The file structure is that described in the Home Assistant docs for [custom sent
 
 ```yaml
 language: "xx" # Replace this with an actual language code
-intent_script:
+intents:
   IntentHandler: # Change this to an actual intent key
     data:
       - sentences:
@@ -103,7 +103,7 @@ If you see an intent that you'd like to use, but it's not translated in your lan
 
 ```yaml
 language: "fr" # Replace this with the language code for your actual language, if it's not French
-intent_script:
+intents:
   IntentHandler:
     data:
       - sentences:
