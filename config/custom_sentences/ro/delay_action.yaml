@@ -1,0 +1,56 @@
+language: ro
+
+intents:
+  DelayAction:
+    data:
+      - sentences:
+          - "({sentence_1};(peste|(î|i)n) <time_interval>)"
+        slots:
+          language: ro
+      - sentences:
+          - "({sentence_1};(peste|(î|i)n) (o|un) {time_units})"
+        slots:
+          number: 1
+          language: ro
+      - sentences:
+          - "({sentence_1};(peste|(î|i)n) [o] (jum(ă|a)tate|juma) de or(ă|a))"
+        slots:
+          number: 30
+          time_units: minutes
+          language: ro
+      - sentences:
+          - "({sentence_1};(peste|(î|i)n) un sfert de or(ă|a))"
+        slots:
+          number: 15
+          time_units: minutes
+          language: ro
+      - sentences:
+          - "({sentence_1};(peste|(î|i)n) (trei|3) sferturi de or(ă|a))"
+        slots:
+          number: 45
+          time_units: minutes
+          language: ro
+
+lists:
+  sentence:
+    wildcard: true
+  number:
+    range:
+      from: 1
+      to: 500
+  time_units:
+    values:
+      - in: secund(ă|a|e)
+        out: seconds
+      - in: minut[e]
+        out: minutes
+      - in: or(ă|a|e)
+        out: hours
+
+expansion_rules:
+  time_interval: "{number} [de ]{time_units}"
+
+responses:
+  intents:
+    DelayAction:
+      default: "Mă ocup în {{slots.number}} {{ {'seconds': 'secunde', 'minutes': 'minute', 'hours': 'ore'}[slots.time_units] }}"
