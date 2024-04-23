@@ -1,6 +1,6 @@
 language: "en"
 intents:
-  ConcatenatedSentences: # Change this to an actual intent key
+  ConcatenatedSentences:
     data:
       - sentences:
           - "{sentence_1} (and[ then]|then) {sentence_2}"
