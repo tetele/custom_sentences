@@ -1,0 +1,51 @@
+language: en
+
+intents:
+  DelayAction:
+    data:
+      - sentences:
+          - "({sentence};<in_time_interval>)"
+        slots:
+          language: en
+
+      - sentences:
+          - "({sentence};<in_time_interval>)"
+        expansion_rules:
+          time_interval: "(one|a[n]) {time_units}"
+        slots:
+          number: 1
+          language: en
+
+      - sentences:
+          - "({sentence};<in_time_interval>)"
+        expansion_rules:
+          time_interval: "[(one|a[n]) ]half [of ][an ]hour"
+        slots:
+          number: 30
+          time_units: minutes
+          language: en
+
+lists:
+  sentence:
+    wildcard: true
+  number:
+    range:
+      from: 1
+      to: 500
+  time_units:
+    values:
+      - in: second[s]
+        out: seconds
+      - in: minute[s]
+        out: minutes
+      - in: hour[s]
+        out: hours
+
+expansion_rules:
+  time_interval: "{number} {time_units}"
+  in_time_interval: "(in <time_interval>[ from now]|<time_interval> from now)"
+
+responses:
+  intents:
+    DelayAction:
+      default: "I'll do it in {{ slots.number }} {{ slots.time_units }}"
