@@ -1,0 +1,12 @@
+# Interprets a sentence with a delay
+DelayAction:
+  async_action: true
+  mode: parallel
+  action:
+    - delay: >
+        {{ { time_units: number } }}
+    - service: conversation.process
+      data:
+        agent_id: homeassistant
+        text: "{{ sentence }}"
+        language: "{{ language }}"
